@@ -42,7 +42,11 @@ cmdscale_landmarks <- function(dist_2lm, ndim = 3, rescale = TRUE, ...) {
     ) + mu
 
   # classical MDS on landmarks
-  e <- irlba::partial_eigen(-x_dc / 2, symmetric = TRUE, n = ndim, ...)
+  if (ndim > 0.5 * min(nrow(x_dc), ncol(x_dc))) {
+    e <- eigen(-x_dc / 2, symmetric = TRUE)
+  } else {
+    e <- irlba::partial_eigen(-x_dc / 2, symmetric = TRUE, n = ndim, ...)
+  }
   ev <- e$values
   evec <- e$vectors
   ndim1 <- sum(ev > 0)
