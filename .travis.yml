@@ -12,6 +12,5 @@ matrix:
     os: osx
 r_packages:
  - covr
- - devtools
 after_success:
  - R -e 'covr::codecov()'
