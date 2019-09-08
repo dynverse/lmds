@@ -1,16 +1,15 @@
 context("Testing select_landmarks()")
 
-x <- Matrix::rsparsematrix(1000, 1000, .01)
+x <- as.matrix(iris[,1:4])
 test_that("Selecting landmarks", {
   lms <- select_landmarks(x, distance_method = "euclidean", landmark_method = "sample", num_landmarks = 500)
 
   expect_is(lms, "matrix")
   expect_gte(min(lms), 0)
-  expect_equal(dim(lms), c(500, nrow(x)))
+  expect_equal(dim(lms), c(150, nrow(x)))
 
   lix <- attr(lms, "landmark_ix")
   expect_false(is.null(lix))
-
   expect_true(all(lix >= 1 & lix <= nrow(x)))
 
   expect_equivalent(
@@ -18,6 +17,9 @@ test_that("Selecting landmarks", {
     rep(0, length(lix)),
     tolerance = 1e-4
   )
+
+  dis <- as.matrix(dist(x))[lix, , drop = FALSE]
+  expect_equal(as.vector(dis), as.vector(lms), tolerance = 1e-4)
 })
 
 test_that("Selecting landmarks with different parameters", {
@@ -37,4 +39,7 @@ test_that("Selecting landmarks with different parameters", {
     rep(0, length(lix)),
     tolerance = 1e-4
   )
+
+  dis <- (1 - (cor(t(x)) + 1) / 2)[lix, , drop = FALSE]
+  expect_equal(as.vector(dis), as.vector(lms), tolerance = 1e-4)
 })
