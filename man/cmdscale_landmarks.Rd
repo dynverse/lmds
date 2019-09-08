@@ -20,7 +20,7 @@ Perform MDS on landmarks and project other samples to the same space
 }
 \examples{
 library(Matrix)
-x <- Matrix::rsparsematrix(10000, 1000, .01)
+x <- as.matrix(iris[,1:4])
 dist_2lm <- select_landmarks(x)
 cmdscale_landmarks(dist_2lm)
 }

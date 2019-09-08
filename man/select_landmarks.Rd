@@ -26,6 +26,6 @@ In addition, the distances between the landmarks and all samples are calculated.
 }
 \examples{
 library(Matrix)
-x <- Matrix::rsparsematrix(10000, 1000, .01)
+x <- Matrix::rsparsematrix(1000, 1000, .01)
 select_landmarks(x)
 }

@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' library(Matrix)
-#' x <- Matrix::rsparsematrix(10000, 1000, .01)
+#' x <- Matrix::rsparsematrix(1000, 1000, .01)
 #' lmds(x, ndim = 3)
 lmds <- dynutils::inherit_default_params(
   list(select_landmarks, cmdscale_landmarks),

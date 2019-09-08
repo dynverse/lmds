@@ -1,6 +1,6 @@
 context("Testing select_landmarks()")
 
-x <- Matrix::rsparsematrix(10000, 1000, .01)
+x <- Matrix::rsparsematrix(1000, 1000, .01)
 test_that("Selecting landmarks", {
   lms <- select_landmarks(x, distance_method = "euclidean", landmark_method = "sample", num_landmarks = 500)
 

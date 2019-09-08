@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' library(Matrix)
-#' x <- Matrix::rsparsematrix(10000, 1000, .01)
+#' x <- as.matrix(iris[,1:4])
 #' dist_2lm <- select_landmarks(x)
 #' cmdscale_landmarks(dist_2lm)
 cmdscale_landmarks <- function(dist_2lm, ndim = 3, rescale = TRUE, ...) {
@@ -35,15 +35,14 @@ cmdscale_landmarks <- function(dist_2lm, ndim = 3, rescale = TRUE, ...) {
   # double center data
   mu_n <- rowMeans(x)
   mu <- mean(x)
-  x_dc <-
-    sweep(
-      sweep(x, 1, mu_n, "-"),
-      2, mu_n, "-"
-    ) + mu
+  x_c <- sweep(x, 1, mu_n, "-")
+  x_dc <- sweep(x_c, 2, mu_n, "-") + mu
 
   # classical MDS on landmarks
   if (ndim > 0.5 * min(nrow(x_dc), ncol(x_dc))) {
     e <- eigen(-x_dc / 2, symmetric = TRUE)
+    e$values <- e$values[seq_len(ndim)]
+    e$vectors <- e$vectors[, seq_len(ndim), drop = FALSE]
   } else {
     e <- irlba::partial_eigen(-x_dc / 2, symmetric = TRUE, n = ndim, ...)
   }
@@ -59,6 +58,7 @@ cmdscale_landmarks <- function(dist_2lm, ndim = 3, rescale = TRUE, ...) {
 
   # distance-based triangulation
   points_inv <- evec / rep(sqrt(ev), each = n)
+  dimred <- -t(t(points_inv) %*% ((dist_2lm - rep(mu_n, each = N)) / 2))
   dimred <- (-t(dist_2lm - rep(mu_n, each = N)) / 2) %*% points_inv
 
   if (rescale) {
