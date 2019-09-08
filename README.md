@@ -13,13 +13,7 @@ Torgerson MDS. LMDS aims to produce the same dimensionality reduction as
 ``` r
 library(lmds)
 x <- as.matrix(iris[,1:4])
-dimred <- lmds(
-  x,
-  ndim = 2, 
-  distance_method = "euclidean", 
-  landmark_method = "sample",
-  num_landmarks = 20
-)
+dimred <- lmds(x, ndim = 2)
 qplot(dimred[,1], dimred[,2]) + labs(title = "lmds()") + theme_classic()
 ```
 
@@ -32,6 +26,8 @@ qplot(dimred[,1], dimred[,2]) + labs(title = "cmdscale()") + theme_classic()
 ```
 
 <img src="man/figures/compare-2.png" width="100%" />
+
+## Execution time
 
 The execution time of `lmds()` scales linearly with respect to the
 dataset size. <img src="man/figures/timings-1.png" width="100%" />

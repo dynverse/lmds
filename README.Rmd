@@ -28,19 +28,15 @@ linearly with respect to the number of samples.
 ```{r compare}
 library(lmds)
 x <- as.matrix(iris[,1:4])
-dimred <- lmds(
-  x,
-  ndim = 2, 
-  distance_method = "euclidean", 
-  landmark_method = "sample",
-  num_landmarks = 20
-)
+dimred <- lmds(x, ndim = 2)
 qplot(dimred[,1], dimred[,2]) + labs(title = "lmds()") + theme_classic()
 
 dimred <- cmdscale(dist(x))
 qplot(dimred[,1], dimred[,2]) + labs(title = "cmdscale()") + theme_classic()
 ```
 
+
+## Execution time
 The execution time of `lmds()` scales linearly with respect to the dataset size.
 ```{r timings, echo=FALSE}
 largex <- Matrix::rsparsematrix(nrow = 100000, ncol = 10000, density = .01)
