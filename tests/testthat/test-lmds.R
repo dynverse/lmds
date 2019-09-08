@@ -1,7 +1,7 @@
 context("Testing lmds()")
 
 set.seed(1)
-x <- generate_dataset(num_samples = 101, num_features = 100)
+x <- as.matrix(iris[,1:4])
 
 test_that("Perform dimred", {
   out1 <- lmds(x)

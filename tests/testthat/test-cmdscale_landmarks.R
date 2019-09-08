@@ -1,6 +1,6 @@
 context("Testing cmdscale_landmarks()")
 
-x <- generate_dataset(num_samples = 101)
+x <- as.matrix(iris[,1:4])
 lms <- select_landmarks(x, distance_method = "euclidean", landmark_method = "sample", num_landmarks = 500)
 
 test_that("Reducing dimensionality", {
