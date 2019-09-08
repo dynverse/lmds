@@ -26,10 +26,9 @@ Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical 'Torgerso
 LMDS scales to significantly larger data sets since it only computes the distances between
 a set of landmarks and all samples. Has built-in support for sparse matrices.
 
-Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical 'Torgerson' MDS.
-LMDS scales to significantly larger data sets since it only computes the distances between
-a set of landmarks and all samples.
-Has built-in support for sparse matrices.
+Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical Torgerson MDS.
+LMDS aims to produce the same dimensionality reduction as \code{cmdscale()}, but scale
+linearly with respect to the number of samples.
 }
 \examples{
 library(Matrix)
