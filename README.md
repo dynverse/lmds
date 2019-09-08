@@ -7,12 +7,8 @@ Status](https://travis-ci.org/dynverse/lmds.svg?branch=master)](https://travis-c
 # `lmds`: Landmark Multi-Dimensional Scaling
 
 Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical
-‘Torgerson’ MDS. LMDS scales to significantly larger data sets since
-it only computes the distances between a set of landmarks and all
-samples. `lmds` built-in support for sparse matrices.
-
-In essence, LMDS attempts to produce the same dimensionality reduction
-as `cmdscale()`, but in a much more scaleable manner.
+Torgerson MDS. LMDS aims to produce the same dimensionality reduction as
+`cmdscale()`, but scale linearly with respect to the number of samples.
 
 ``` r
 library(lmds)
@@ -50,7 +46,9 @@ changes.
 
 ### Recent changes in lmds 0.1.0
 
-Initial release of lmds. \* Landmark Multi-Dimensional Scaling (LMDS) is
-an extension of classical ‘Torgerson’ MDS. LMDS scales to significantly
-larger data sets since it only computes the distances between a set of
-landmarks and all samples. Has built-in support for sparse matrices.
+Initial release of lmds.
+
+  - Landmark Multi-Dimensional Scaling (LMDS) is an extension of
+    classical Torgerson MDS. LMDS aims to produce the same
+    dimensionality reduction as `cmdscale()`, but scale linearly with
+    respect to the number of samples.
