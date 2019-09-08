@@ -1,0 +1,40 @@
+context("Testing select_landmarks()")
+
+x <- Matrix::rsparsematrix(10000, 1000, .01)
+test_that("Selecting landmarks", {
+  lms <- select_landmarks(x, distance_method = "euclidean", landmark_method = "sample", num_landmarks = 500)
+
+  expect_is(lms, "matrix")
+  expect_gte(min(lms), 0)
+  expect_equal(dim(lms), c(500, nrow(x)))
+
+  lix <- attr(lms, "landmark_ix")
+  expect_false(is.null(lix))
+
+  expect_true(all(lix >= 1 & lix <= nrow(x)))
+
+  expect_equivalent(
+    lms[cbind(seq_along(lix), lix)],
+    rep(0, length(lix)),
+    tolerance = 1e-4
+  )
+})
+
+test_that("Selecting landmarks with different parameters", {
+  lms <- select_landmarks(x, distance_method = "pearson", landmark_method = "sample", num_landmarks = 101)
+
+  expect_is(lms, "matrix")
+  expect_gte(min(lms), 0)
+  expect_equal(dim(lms), c(101, nrow(x)))
+
+  lix <- attr(lms, "landmark_ix")
+  expect_false(is.null(lix))
+
+  expect_true(all(lix >= 1 & lix <= nrow(x)))
+
+  expect_equivalent(
+    lms[cbind(seq_along(lix), lix)],
+    rep(0, length(lix)),
+    tolerance = 1e-4
+  )
+})

@@ -1,0 +1,91 @@
+---
+title: "lmds"
+output: github_document
+---
+
+[![Build Status](https://travis-ci.org/dynverse/lmds.svg?branch=master)](https://travis-ci.org/dynverse/lmds) 
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  out.width = "100%",
+  fig.path = "man/figures/",
+  message = FALSE,
+  dpi = 300
+)
+set.seed(1)
+library(tidyverse)
+```
+
+# `lmds`:  Landmark Multi-Dimensional Scaling
+
+Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical 'Torgerson' MDS.
+LMDS scales to significantly larger data sets since it only computes the distances between
+a set of landmarks and all samples. `lmds` built-in support for sparse matrices.
+
+In essence, LMDS attempts to produce the same dimensionality reduction as `cmdscale()`, but 
+in a much more scaleable manner.
+
+```{r compare}
+library(lmds)
+x <- as.matrix(iris[,1:4])
+dimred <- lmds(
+  x,
+  ndim = 2, 
+  distance_method = "euclidean", 
+  landmark_method = "sample",
+  num_landmarks = 20
+)
+qplot(dimred[,1], dimred[,2]) + labs(title = "lmds()") + theme_classic()
+
+dimred <- cmdscale(dist(x))
+qplot(dimred[,1], dimred[,2]) + labs(title = "cmdscale()") + theme_classic()
+```
+
+The execution time of `lmds()` scales linearly with respect to the dataset size.
+```{r timings, echo=FALSE}
+largex <- Matrix::rsparsematrix(nrow = 100000, ncol = 10000, density = .01)
+
+log <- list()
+num_samples <- 100
+time <- 0
+while (time < 10) {
+  subx <- largex[seq_len(num_samples),]
+  time <- system.time({
+    dimred <- lmds(subx)
+  })[["user.self"]]
+  log[[length(log) + 1]] <- tibble(method = "lmds()", num_samples, time)
+  num_samples <- num_samples * 1.5
+}
+
+num_samples <- 100
+time <- 0
+while (time < 10) {
+  subx <- largex[seq_len(num_samples),]
+  time <- system.time({
+    dist <- dist(subx)
+    dimred <- cmdscale(dist)
+  })[["user.self"]]
+  log[[length(log) + 1]] <- tibble(method = "cmdscale()", num_samples, time)
+  num_samples <- num_samples * 1.5
+}
+
+logdf <- bind_rows(log)
+
+ggplot(logdf, aes(num_samples, time, colour = method)) + 
+  geom_point() +
+  geom_line() +
+  theme_classic()
+```
+
+## Latest changes
+
+Check out `news(package = "lmds")` or [NEWS.md](NEWS.md) for a full list of changes.
+
+<!-- This section gets automatically generated from inst/NEWS.md, and also generates inst/NEWS -->
+
+```{r news, echo=FALSE, results="asis"}
+cat(dynutils::recent_news())
+```

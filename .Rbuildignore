@@ -1,0 +1,6 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.travis
+^\.git$
+^README\.Rmd$
+cran-comments.md
