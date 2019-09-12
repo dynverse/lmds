@@ -21,14 +21,19 @@ lmds(x, ndim = 3, distance_method = c("euclidean", "pearson",
 
 \item{num_landmarks}{The number of landmarks to use,}
 }
+\value{
+The dimensionality reduction in the form of a \code{nrow(x)} by \code{ndim} matrix.
+}
 \description{
-Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical 'Torgerson' MDS.
-LMDS scales to significantly larger data sets since it only computes the distances between
-a set of landmarks and all samples. Has built-in support for sparse matrices.
+A fast dimensionality reduction method scaleable to large numbers of samples.
+Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical 'Torgerson MDS',
+but rather than calculating a complete distance matrix between all pairs of samples,
+only the distances between a set of landmarks and the samples are calculated.
 
-Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical Torgerson MDS.
-LMDS aims to produce the same dimensionality reduction as \code{cmdscale()}, but scale
-linearly with respect to the number of samples.
+A fast dimensionality reduction method scaleable to large numbers of samples.
+Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical Torgerson MDS´,
+but rather than calculating a complete distance matrix between all pairs of samples,
+only the distances between a set of landmarks and the samples are calculated.
 }
 \examples{
 library(Matrix)

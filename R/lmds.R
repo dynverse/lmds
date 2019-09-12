@@ -1,8 +1,9 @@
 #' Landmark MDS
 #'
-#' Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical 'Torgerson' MDS.
-#' LMDS scales to significantly larger data sets since it only computes the distances between
-#' a set of landmarks and all samples. Has built-in support for sparse matrices.
+#' A fast dimensionality reduction method scaleable to large numbers of samples.
+#' Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical 'Torgerson MDS',
+#' but rather than calculating a complete distance matrix between all pairs of samples,
+#' only the distances between a set of landmarks and the samples are calculated.
 #'
 #' @inheritParams select_landmarks
 #' @inheritParams cmdscale_landmarks
@@ -10,6 +11,8 @@
 #' @export
 #'
 #' @include cmdscale_landmarks.R select_landmarks.R
+#'
+#' @return The dimensionality reduction in the form of a `nrow(x)` by `ndim` matrix.
 #'
 #' @examples
 #' library(Matrix)
@@ -40,13 +43,8 @@ lmds <- dynutils::inherit_default_params(
     )
 
     rownames(dimred) <- rownames(x)
-    colnames(dimred) <- paste0("comp_", seq_len(ndim))
+
 
     dimred
   }
 )
-
-
-
-
-
