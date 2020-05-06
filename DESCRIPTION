@@ -31,7 +31,7 @@ Imports:
   Matrix
 Suggests: 
   testthat
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)
 URL: http://github.com/dynverse/lmds
 BugReports: https://github.com/dynverse/lmds/issues

@@ -4,9 +4,13 @@
 \alias{select_landmarks}
 \title{Select landmarks from dataset}
 \usage{
-select_landmarks(x, distance_method = c("euclidean", "pearson",
-  "spearman", "cosine", "manhattan"), landmark_method = c("sample"),
-  num_landmarks = 500)
+select_landmarks(
+  x,
+  distance_method = c("euclidean", "pearson", "spearman", "cosine", "chisquared",
+    "hamming", "kullback", "manhattan", "maximum", "canberra", "minkowski"),
+  landmark_method = c("sample"),
+  num_landmarks = 500
+)
 }
 \arguments{
 \item{x}{A matrix, optionally sparse.}

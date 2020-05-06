@@ -3,12 +3,16 @@
 \docType{package}
 \name{lmds}
 \alias{lmds}
-\alias{lmds-package}
 \title{Landmark MDS}
 \usage{
-lmds(x, ndim = 3, distance_method = c("euclidean", "pearson",
-  "spearman", "cosine", "manhattan"), landmark_method = c("sample"),
-  num_landmarks = 500)
+lmds(
+  x,
+  ndim = 3,
+  distance_method = c("euclidean", "pearson", "spearman", "cosine", "chisquared",
+    "hamming", "kullback", "manhattan", "maximum", "canberra", "minkowski"),
+  landmark_method = c("sample"),
+  num_landmarks = 500
+)
 }
 \arguments{
 \item{x}{A matrix, optionally sparse.}

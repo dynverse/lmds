@@ -18,7 +18,7 @@
 #' select_landmarks(x)
 select_landmarks <- function(
   x,
-  distance_method = c("euclidean", "pearson", "spearman", "cosine", "manhattan"),
+  distance_method,
   landmark_method = c("sample"),
   num_landmarks = 500
 ) {
@@ -46,3 +46,4 @@ select_landmarks <- function(
 
   dist_2lm
 }
+formals(select_landmarks)$distance_method <- unique(c("euclidean", dynutils::list_distance_methods())) # prioritise euclidean
