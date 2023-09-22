@@ -25,7 +25,7 @@ Encoding: UTF-8
 Imports:
   assertthat,
   dynutils (>= 1.0.3),
-  irlba
+  irlba (>= 2.0.0)
 Suggests: 
   Matrix,
   testthat
