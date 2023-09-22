@@ -3,7 +3,9 @@ title: "lmds"
 output: github_document
 ---
 
-[![Build Status](https://travis-ci.org/dynverse/lmds.svg?branch=master)](https://travis-ci.org/dynverse/lmds) 
+  <!-- badges: start -->
+  [![R-CMD-check](https://github.com/dynverse/lmds/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dynverse/lmds/actions/workflows/R-CMD-check.yaml)
+  <!-- badges: end -->
 
 
 ```{r setup, include = FALSE}
