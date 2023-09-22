@@ -22,7 +22,6 @@ Description:
   linearly with respect to the number of samples.
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
 Imports:
   assertthat,
   dynutils (>= 1.0.3),
