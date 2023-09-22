@@ -15,6 +15,9 @@ cmdscale_landmarks(dist_2lm, ndim = 3, rescale = TRUE, ...)
 
 \item{...}{Extra params to pass to \code{\link[irlba:irlba]{irlba::irlba()}}}
 }
+\value{
+The dimensionality reduction in the form of a \code{ncol(dist_2lm)} by \code{ndim} matrix.
+}
 \description{
 Perform MDS on landmarks and project other samples to the same space
 }

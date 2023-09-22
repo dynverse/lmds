@@ -8,6 +8,8 @@
 #' @importFrom irlba partial_eigen
 #' @importFrom dynutils scale_uniform
 #'
+#' @return The dimensionality reduction in the form of a `ncol(dist_2lm)` by `ndim` matrix.
+#'
 #' @export
 #'
 #' @examples
@@ -64,6 +66,8 @@ cmdscale_landmarks <- function(dist_2lm, ndim = 3, rescale = TRUE, ...) {
   if (rescale) {
     dimred <- dynutils::scale_uniform(dimred)
   }
+
+  colnames(dimred) <- paste0("comp_", seq_len(ndim))
 
   dimred
 }

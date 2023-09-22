@@ -1,8 +1,9 @@
 #' Landmark Multi-Dimensional Scalng
 #'
-#' Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical Torgerson MDS.
-#' LMDS aims to produce the same dimensionality reduction as `cmdscale()`, but scale
-#' linearly with respect to the number of samples.
+#' A fast dimensionality reduction method scaleable to large numbers of samples.
+#' Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical Torgerson MDS´,
+#' but rather than calculating a complete distance matrix between all pairs of samples,
+#' only the distances between a set of landmarks and the samples are calculated.
 #'
 #' @importFrom assertthat assert_that
 #' @importFrom dynutils calculate_distance is_sparse
