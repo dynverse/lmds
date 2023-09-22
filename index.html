@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="index.html">lmds</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,9 +80,9 @@
 </h1>
 <p>A fast dimensionality reduction method scaleable to large numbers of samples. Landmark Multi-Dimensional Scaling (LMDS) is an extension of classical Torgerson MDS, but rather than calculating a complete distance matrix between all pairs of samples, only the distances between a set of landmarks and the samples are calculated.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/dynverse/lmds" class="external-link">lmds</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dynverse.org/lmds/" class="external-link">lmds</a></span><span class="op">)</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="va">dimred</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/lmds.html">lmds</a></span><span class="op">(</span><span class="va">x</span>, ndim <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">dimred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dynverse.org/lmds/reference/lmds-package.html" class="external-link">lmds</a></span><span class="op">(</span><span class="va">x</span>, ndim <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu">qplot</span><span class="op">(</span><span class="va">dimred</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">dimred</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span> <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"lmds()"</span><span class="op">)</span> <span class="op">+</span> <span class="fu">theme_classic</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: `qplot()` was deprecated in ggplot2 3.4.0.</span></span>
 <span><span class="co">#&gt; This warning is displayed once every 8 hours.</span></span>
@@ -95,7 +95,7 @@
 <div class="section level2">
 <h2 id="execution-time">Execution time<a class="anchor" aria-label="anchor" href="#execution-time"></a>
 </h2>
-<p>The execution time of <code><a href="reference/lmds.html">lmds()</a></code> scales linearly with respect to the dataset size. <img src="reference/figures/timings-1.png" width="100%"></p>
+<p>The execution time of <code><a href="https://dynverse.org/lmds/reference/lmds-package.html" class="external-link">lmds()</a></code> scales linearly with respect to the dataset size. <img src="reference/figures/timings-1.png" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="latest-changes">Latest changes<a class="anchor" aria-label="anchor" href="#latest-changes"></a>
