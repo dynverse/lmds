@@ -25,9 +25,9 @@ Encoding: UTF-8
 Imports:
   assertthat,
   dynutils (>= 1.0.3),
-  irlba,
-  Matrix
+  irlba
 Suggests: 
+  Matrix,
   testthat
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
