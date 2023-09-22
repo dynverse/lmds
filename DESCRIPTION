@@ -1,7 +1,7 @@
 Package: lmds
 Type: Package
 Title: Landmark Multi-Dimensional Scaling
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person(
       "Robrecht", "Cannoodt", 
@@ -32,7 +32,7 @@ Suggests:
   testthat
 RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
-URL: http://github.com/dynverse/lmds
+URL: https://dynverse.org/lmds/, https://github.com/dynverse/lmds
 BugReports: https://github.com/dynverse/lmds/issues
 Collate: 
     'cmdscale_landmarks.R'
